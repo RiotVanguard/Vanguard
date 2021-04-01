@@ -83,11 +83,17 @@ Return Value:
         const PDRIVER_OBJECT VgkDriverObject = DeviceObject->DriverObject;
         if (VgkDriverObject && VgkDriverObject->DriverStart)
         {
+            // Imagine writing C.
             //
-            // Executing Vanguard kernel.
-            //
-            ((void(*)())(RtlFindExportedRoutineByName(VgkDriverObject->DriverStart, "Egg")))();
-
+            void* BigEgg = NULL;
+            BigEgg = RtlFindExportedRoutineByName(VgkDriverObject->DriverStart, "Egg");
+            if (BigEgg) 
+            {
+                //
+                // Executing Vanguard kernel.
+                //
+                ((void(*)())(BigEgg))();
+            }
             Status = STATUS_SUCCESS;
         }
         
