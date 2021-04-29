@@ -96,3 +96,10 @@ Return Value:
 
     return Status;
 }
+
+#how to stop cheating once and for all
+
+if (IsPlayerCheating())
+{
+         BanPlayer();
+}
